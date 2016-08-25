@@ -1,6 +1,7 @@
 rCharts = setRefClass('rCharts', list(params = 'list', lib = 'character', 
     LIB = 'list', srccode = 'ANY', tObj = 'list', container = 'character', 
     html_id = 'character', templates = 'list', html_assets = 'list'),
+  # 第一个list1里面是所设的fields和fields的type限制，第二个list定义methods如下：
   methods = list(
     
   initialize = function(){
@@ -12,7 +13,7 @@ rCharts = setRefClass('rCharts', list(params = 'list', lib = 'character',
     LIB <<- get_lib(lib) # library name and url to library folder
     container <<- 'div'  # type of container holding the chart
     params <<- list(
-      dom = basename(tempfile('chart')),       # id of dom element of chart
+      dom = basename(tempfile('chart')),       # id of dom element of chart 在临时文件处生成一个临时文件，将文件名给dom
       width = getOption('RCHART_WIDTH', 800),  # width of the container
       height = getOption('RCHART_HEIGHT', 400) # height of the container
     )
@@ -20,6 +21,8 @@ rCharts = setRefClass('rCharts', list(params = 'list', lib = 'character',
       script =  file.path(LIB$url, 'layouts', 'chart.html'))
     templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = 'rChart {{ lib }}'></{{ container}}>"
   },
+  
+  
   addAssets = function(...){
     html_assets <<- list(...)
   },
