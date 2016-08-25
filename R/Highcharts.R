@@ -144,7 +144,7 @@ hPlot <- highchartPlot <- function(..., radius = 3, title = NULL, subtitle = NUL
     rChart <- Highcharts$new()
     
     # Get layers
-    d <- getLayer(...)
+    d <- getLayer(...)  # 在getLayer.R中定义了一个函数用来利用lattice包相关读取，绘图指令，生成了一个list；其中包括x，y，data，type,facet等信息
     
     data <- data.frame(
         x = d$data[[d$x]],
